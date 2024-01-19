@@ -17,13 +17,40 @@ class npc:
         self.intelligence = des()
         self.sagesse = des()
         self.charisme = des()
-        self.classe_dèarmure = random.randint(1,12)
+        self.classe_armure = random.randint(1,12)
         self.nom = 'Yi Long'
-        self.race = 'humain'
-        self.espece = 'animal'
+        self.race = 'kobold'
+        self.espece = 'monstre'
         self.point_de_vie = random.randint(1,20)
         self.profession = 'voleur'
-        
+    def afficher_stats(self):
+        print('force: ', self.force)
+        print('agilité: ', self.agilite)
+        print('constutution: ', self.constitution)
+        print('intelligence: ', self.intelligence)
+        print('sagesse: ', self.sagesse)
+        print('charisme: ', self.charisme)
+        print("classe d'armure: " , self.classe_armure)
+        print('nom: ', self.nom)
+        print('race: ', self.race)
+        print('espèce: ', self.espece)
+        print('point de vie: ', self.point_de_vie)
+        print('profession: ', self.profession )
+
+nPc = npc()
+nPc.afficher_stats()
+
+class kobold(npc):
+    def attaquer(self):
+        pass
+
+    def subir_dommage(self):
+        self.point_de_vie -= (random.randint(1,6) - self.classe_armure)
+class heros(npc):
+    def attaquer(self):
+        pass
+    def subir_dommage(self):
+        self.point_de_vie -= (random.randint(1, 6) - self.classe_armure)
 
 
 
