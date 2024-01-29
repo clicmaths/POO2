@@ -39,16 +39,47 @@ class npc:
 
 nPc = npc()
 nPc.afficher_stats()
-
 class kobold(npc):
-    def attaquer(self):
-        pass
+    def attaquer(self, cible):
+        self.cible = cible
+        attaque = random.randint(1, 20)
+        if attaque == 20:
+            dommage = random.randint(1, 8)
+            cible.point_de_vie = - dommage
+
+        elif 20 > attaque > 1:
+            if attaque >= cible.classe_armure:
+                dommage = random.randint(1, 6)
+                cible.point_de_vie = - dommage
+
+            else:
+                print("attaque n'a pas fonctionné")
+
+        elif attaque == 1:
+            print("attaque ratée")
 
     def subir_dommage(self):
         self.point_de_vie -= (random.randint(1,6) - self.classe_armure)
 class heros(npc):
-    def attaquer(self):
-        pass
+    def attaquer(self, cible):
+        self.cible = cible
+        attaque = random.randint(1, 20)
+        if attaque == 20:
+            dommage = random.randint(1,8)
+            cible.point_de_vie =- dommage
+
+        elif 20 > attaque > 1:
+            if attaque >= cible.classe_armure:
+                dommage = random.randint(1,6)
+                cible.point_de_vie =- dommage
+
+            else:
+                print("attaque n'a pas fonctionné")
+
+        elif attaque == 1:
+            print("attaque ratée")
+
+
     def subir_dommage(self):
         self.point_de_vie -= (random.randint(1, 6) - self.classe_armure)
 
