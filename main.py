@@ -1,5 +1,6 @@
 import random
 
+#fonction pour définir les stats
 def des():
     de1 = random.randint(1,6)
     de2 = random.randint(1,6)
@@ -9,7 +10,11 @@ def des():
     list.sort()
     list.pop(0)
     return list[0] + list[1] + list[2]
+
+#classe npc
 class npc:
+
+#fonction pour les stats de npc
     def __init__(self):
         self.force = des()
         self.agilite = des()
@@ -23,6 +28,8 @@ class npc:
         self.espece = 'monstre'
         self.point_de_vie = random.randint(1,20)
         self.profession = 'voleur'
+
+#fonction qui montre les stats
     def afficher_stats(self):
         print('force: ', self.force)
         print('agilité: ', self.agilite)
@@ -37,9 +44,9 @@ class npc:
         print('point de vie: ', self.point_de_vie)
         print('profession: ', self.profession )
 
-nPc = npc()
-nPc.afficher_stats()
+#classe kobold qui est un npc
 class kobold(npc):
+    #méthode d'attaquer
     def attaquer(self, cible):
         self.cible = cible
         attaque = random.randint(1, 20)
@@ -58,9 +65,14 @@ class kobold(npc):
         elif attaque == 1:
             print("attaque ratée")
 
+#subir de dommage
     def subir_dommage(self):
         self.point_de_vie -= (random.randint(1,6) - self.classe_armure)
+
+#classe héros (exemple de npc)
 class heros(npc):
+
+#fonction d'attaquer
     def attaquer(self, cible):
         self.cible = cible
         attaque = random.randint(1, 20)
@@ -79,7 +91,7 @@ class heros(npc):
         elif attaque == 1:
             print("attaque ratée")
 
-
+#subir de dommage
     def subir_dommage(self):
         self.point_de_vie -= (random.randint(1, 6) - self.classe_armure)
 
